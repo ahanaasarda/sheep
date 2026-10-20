@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dreamy Night</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="night">
+
+    <!-- Music player -->
+    <audio id="night-music" loop preload="auto">
+      <source src="./lullaby.mp3" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
+
+    <button class="music-button" id="music-toggle" type="button">
+      ♫ Play music
+    </button>
+
+    <!-- Sleepy moon -->
+    <div class="moon">
+      <span class="moon-eye eye-left"></span>
+      <span class="moon-eye eye-right"></span>
+      <span class="moon-smile"></span>
+    </div>
+
+    <!-- Flickering stars -->
+    <div class="stars">
+      <span>✦</span><span>✧</span><span>✦</span>
+      <span>✧</span><span>·</span><span>✦</span>
+      <span>✧</span><span>·</span><span>✦</span>
+      <span>✧</span><span>✦</span><span>·</span>
+      <span>✧</span><span>✦</span><span>✧</span>
+      <span>·</span><span>✦</span><span>✧</span>
+    </div>
+
+   
+
+    <!-- Moving clouds -->
+    <div class="cloud cloud-one">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="cloud cloud-two">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="cloud cloud-three">
+      <span></span><span></span><span></span>
+    </div>
+
+    <!-- Background hill -->
+    <div class="hill-back"></div>
+
+    <!-- Fence -->
+    <div class="fence">
+      <div class="rail rail-top"></div>
+      <div class="rail rail-bottom"></div>
+      <div class="post post-one"></div>
+      <div class="post post-two"></div>
+      <div class="post post-three"></div>
+      <div class="post post-four"></div>
+      <div class="post post-five"></div>
+    </div>
+
+    <!-- First sheep -->
+    <div class="sheep sheep-one">
+      <div class="wool wool-one"></div>
+      <div class="wool wool-two"></div>
+      <div class="wool wool-three"></div>
+      <div class="wool wool-four"></div>
+      <div class="wool wool-five"></div>
+      <div class="body"></div>
+      <div class="head">
+        <div class="ear"></div>
+        <div class="eye"></div>
+        <div class="cheek"></div>
+      </div>
+      <div class="leg leg-one"></div>
+      <div class="leg leg-two"></div>
+      <div class="leg leg-three"></div>
+      <div class="leg leg-four"></div>
+    </div>
+
+    <!-- Second sheep -->
+    <div class="sheep sheep-two">
+      <div class="wool wool-one"></div>
+      <div class="wool wool-two"></div>
+      <div class="wool wool-three"></div>
+      <div class="wool wool-four"></div>
+      <div class="wool wool-five"></div>
+      <div class="body"></div>
+      <div class="head">
+        <div class="ear"></div>
+        <div class="eye"></div>
+        <div class="cheek"></div>
+      </div>
+      <div class="leg leg-one"></div>
+      <div class="leg leg-two"></div>
+      <div class="leg leg-three"></div>
+      <div class="leg leg-four"></div>
+    </div>
+
+    <!-- Foreground -->
+    <div class="hill-front"></div>
+
+  </main>
+
+  <script>
+    const music = document.getElementById("night-music");
+    const button = document.getElementById("music-toggle");
+
+    button.addEventListener("click", async function () {
+      if (music.paused) {
+        try {
+          await music.play();
+          button.textContent = "♫ Pause music";
+        } catch (error) {
+          console.error("Music could not play:", error);
+          button.textContent = "♫ Couldn't play — check audio";
+        }
+      } else {
+        music.pause();
+        button.textContent = "♫ Play music";
+      }
+    });
+
+    music.addEventListener("error", function () {
+      console.error("Audio file failed to load. Check lullaby.mp3.");
+    });
+  </script>
+
+</body>
+</html>

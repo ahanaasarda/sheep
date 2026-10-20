@@ -1,0 +1,472 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #10052f;
+  overflow: hidden;
+}
+
+.night {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    #10052f 0%,
+    #270548 38%,
+    #65066d 72%,
+    #a90091 100%
+  );
+}
+
+/* Sleepy crescent moon */
+.moon {
+  position: absolute;
+  top: 9%;
+  right: 13%;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: #ffe8b8;
+  box-shadow: 0 0 28px #ffe8b844;
+  animation: moonFloat 5s ease-in-out infinite;
+  z-index: 2;
+}
+
+.moon::after {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 24px;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: #190535;
+}
+
+.moon-eye {
+  position: absolute;
+  top: 39px;
+  width: 10px;
+  height: 5px;
+  border-bottom: 2px solid #78506f;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.eye-left {
+  left: 25px;
+}
+
+.eye-right {
+  left: 46px;
+}
+
+.moon-smile {
+  position: absolute;
+  top: 49px;
+  left: 36px;
+  width: 10px;
+  height: 5px;
+  border-bottom: 2px solid #78506f;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+@keyframes moonFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Stars */
+.stars span {
+  position: absolute;
+  color: #fff0ce;
+  z-index: 2;
+  animation: starFlicker 1.6s ease-in-out infinite alternate;
+}
+
+/* Different positions */
+.stars span:nth-child(1)  { top: 12%; left: 10%; font-size: 19px; }
+.stars span:nth-child(2)  { top: 22%; left: 25%; font-size: 16px; }
+.stars span:nth-child(3)  { top: 17%; left: 43%; font-size: 20px; }
+.stars span:nth-child(4)  { top: 33%; left: 8%; font-size: 17px; }
+.stars span:nth-child(5)  { top: 28%; left: 36%; font-size: 24px; }
+.stars span:nth-child(6)  { top: 13%; left: 65%; font-size: 17px; }
+.stars span:nth-child(7)  { top: 37%; left: 52%; font-size: 20px; }
+.stars span:nth-child(8)  { top: 31%; left: 77%; font-size: 25px; }
+.stars span:nth-child(9)  { top: 44%; left: 17%; font-size: 18px; }
+.stars span:nth-child(10) { top: 26%; left: 91%; font-size: 16px; }
+.stars span:nth-child(11) { top: 41%; left: 67%; font-size: 20px; }
+.stars span:nth-child(12) { top: 18%; left: 84%; font-size: 22px; }
+.stars span:nth-child(13) { top: 47%; left: 38%; font-size: 17px; }
+.stars span:nth-child(14) { top: 35%; left: 94%; font-size: 19px; }
+.stars span:nth-child(15) { top: 9%; left: 34%; font-size: 15px; }
+.stars span:nth-child(16) { top: 39%; left: 85%; font-size: 23px; }
+.stars span:nth-child(17) { top: 25%; left: 57%; font-size: 16px; }
+.stars span:nth-child(18) { top: 48%; left: 73%; font-size: 18px; }
+
+/* Staggered flickering */
+.stars span:nth-child(2n) {
+  animation-duration: 2.3s;
+}
+
+.stars span:nth-child(3n) {
+  animation-duration: 1.2s;
+  animation-delay: 0.6s;
+}
+
+.stars span:nth-child(4n) {
+  animation-delay: 1s;
+}
+
+@keyframes starFlicker {
+  0% {
+    opacity: 0.15;
+    transform: scale(0.65) rotate(-15deg);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(0.95) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.25) rotate(15deg);
+  }
+}
+
+/* Clouds */
+.cloud {
+  position: absolute;
+  width: 125px;
+  height: 29px;
+  border-radius: 30px;
+  background: #d5b3ed;
+  opacity: 0.35;
+  z-index: 2;
+
+  /* These clouds visibly travel from left to right */
+  animation: cloudMove 22s linear infinite alternate;
+}
+
+.cloud span {
+  position: absolute;
+  bottom: 7px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.cloud span:nth-child(1) {
+  left: 12px;
+}
+
+.cloud span:nth-child(2) {
+  left: 40px;
+  bottom: 14px;
+}
+
+.cloud span:nth-child(3) {
+  left: 75px;
+}
+
+/* Each cloud has a different path and speed */
+.cloud-one {
+  top: 25%;
+  left: 5%;
+  animation-duration: 18s;
+}
+
+.cloud-two {
+  top: 37%;
+  left: 55%;
+  transform: scale(0.75);
+  animation-duration: 27s;
+  animation-delay: -10s;
+}
+
+.cloud-three {
+  top: 17%;
+  left: 35%;
+  transform: scale(0.55);
+  animation-duration: 32s;
+  animation-delay: -15s;
+}
+
+/* Move clouds horizontally */
+@keyframes cloudMove {
+  from {
+    left: -5%;
+  }
+  to {
+    left: 85%;
+  }
+}
+
+/* Back hill */
+.hill-back {
+  position: absolute;
+  left: -10%;
+  bottom: 16%;
+  width: 120%;
+  height: 27%;
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  background: #62065f;
+  z-index: 1;
+}
+
+/* Fence */
+.fence {
+  position: absolute;
+  left: 27%;
+  bottom: 22%;
+  width: 28%;
+  height: 70px;
+  z-index: 4;
+}
+
+.rail {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  border-radius: 5px;
+  background: #f3b9dd;
+  box-shadow: 0 3px 0 #b96cae;
+}
+
+.rail-top {
+  top: 20px;
+}
+
+.rail-bottom {
+  top: 48px;
+}
+
+.post {
+  position: absolute;
+  top: 4px;
+  width: 12px;
+  height: 65px;
+  border-radius: 5px;
+  background: #ffe0ee;
+}
+
+.post-one { left: 0; }
+.post-two { left: 25%; }
+.post-three { left: 50%; }
+.post-four { left: 75%; }
+.post-five { right: 0; }
+
+/* Sheep */
+.sheep {
+  position: absolute;
+  left: -140px;
+  bottom: 22%;
+  width: 115px;
+  height: 100px;
+  z-index: 5;
+  animation: sheepJourney 18s linear infinite;
+}
+
+.sheep-two {
+  animation-delay: 9s;
+}
+
+.body {
+  position: absolute;
+  top: 31px;
+  left: 17px;
+  width: 73px;
+  height: 43px;
+  border-radius: 50%;
+  background: #fffaf0;
+}
+
+.wool {
+  position: absolute;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  background: #fffaf0;
+}
+
+.wool-one { top: 23px; left: 18px; }
+.wool-two { top: 14px; left: 37px; }
+.wool-three { top: 18px; left: 56px; }
+.wool-four { top: 29px; left: 70px; }
+.wool-five { top: 39px; left: 23px; }
+
+/* Sheep face */
+.head {
+  position: absolute;
+  top: 28px;
+  right: 2px;
+  width: 34px;
+  height: 38px;
+  border-radius: 48% 48% 42% 42%;
+  background: #e9b9b0;
+  transform: rotate(-8deg);
+}
+
+.ear {
+  position: absolute;
+  top: 3px;
+  left: -10px;
+  width: 16px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e9b9b0;
+  transform: rotate(-30deg);
+}
+
+.eye {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  width: 4px;
+  height: 5px;
+  border-radius: 50%;
+  background: #493047;
+}
+
+.cheek {
+  position: absolute;
+  top: 21px;
+  right: 5px;
+  width: 8px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f79ab6;
+}
+
+/* Moving legs */
+.leg {
+  position: absolute;
+  top: 67px;
+  width: 7px;
+  height: 20px;
+  border-radius: 4px;
+  background: #e9b9b0;
+  transform-origin: top center;
+}
+
+.leg-one { left: 28px; }
+.leg-two { left: 43px; }
+.leg-three { left: 65px; }
+.leg-four { left: 78px; }
+
+.leg-one,
+.leg-three {
+  animation: frontLegs 0.4s ease-in-out infinite alternate;
+}
+
+.leg-two,
+.leg-four {
+  animation: backLegs 0.4s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes frontLegs {
+  to {
+    transform: rotate(-25deg);
+  }
+}
+
+@keyframes backLegs {
+  to {
+    transform: rotate(25deg);
+  }
+}
+
+/* Jumping across the scene */
+@keyframes sheepJourney {
+  0% {
+    left: -140px;
+    bottom: 22%;
+  }
+  24% {
+    left: 16%;
+    bottom: 22%;
+  }
+  31% {
+    left: 21%;
+    bottom: 26%;
+  }
+  39% {
+    left: 30%;
+    bottom: 34%;
+  }
+  45% {
+    left: 38%;
+    bottom: 34%;
+  }
+  51% {
+    left: 46%;
+    bottom: 26%;
+  }
+  56% {
+    left: 52%;
+    bottom: 22%;
+  }
+  100% {
+    left: calc(100% + 150px);
+    bottom: 22%;
+  }
+}
+
+/* Foreground */
+.hill-front {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 22%;
+  background: #310743;
+  z-index: 6;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+  .moon {
+    top: 8%;
+    right: 9%;
+    transform: scale(0.75);
+  }
+
+  .fence {
+    left: 22%;
+    width: 40%;
+  }
+
+  .cloud-two {
+    top: 35%;
+  }
+}
+
+.music-button {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 10;
+  padding: 10px 16px;
+  border: 1px solid #e8c9ff66;
+  border-radius: 25px;
+  background: #32104f;
+  color: #fff0fa;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.music-button:hover {
+  background: #592879;
+}
